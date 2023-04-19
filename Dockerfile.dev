@@ -1,0 +1,11 @@
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm config set strict-ssl false
+RUN npm install
+
+# COPY . . -> not necessary if using docker-compose, leave it if using docker run
+
+CMD ["npm", "run", "start"]
